@@ -15,10 +15,10 @@
 
 ### Association
 
-- has_many : syuppin
-- has_many : kounyuu_kiroku
+- has_many : syuppins
+- has_many : kounyuu_kirokus
 
-## syuppin
+## syuppin_id
 
 | Column       | Type    | Options  |
 | ------------ | ------- | -------- |
@@ -51,15 +51,15 @@
 
 ## zyuusyo
 
-| Column         | Type   | Options  |
-| -------------- | ------ | -------- |
-| yuubinn_bangou | string | NOT NULL |
-| ken            | string | NOT NULL |
-| zititai        | string | NOT NULL |
-| fandei         | string | NOT NULL |
-| tatemono_mei   | string |          |
-| denwa_bamgou   | string | NOT NULL |
-
+| Column         | Type       | Options  |
+| -------------- | ---------- | -------- |
+| yuubinn_bangou | string     | NOT NULL |
+| ken            | string     | NOT NULL |
+| zititai        | string     | NOT NULL |
+| fandei         | string     | NOT NULL |
+| tatemono_mei   | string     |          |
+| denwa_bamgou   | string     | NOT NULL |
+| kounyuu_kiroku | references |
 ### Association
 
 - belongs_to : kounyuu_kiroku
