@@ -10,7 +10,7 @@
 | namae_kana          | string | NOT NULL |
 | myouzi_kana         | string | NOT NULL |
 | birthday            | date   | NOT NULL |
-| me-ru               | string | NOT NULL |
+| email               | string | NOT NULL |
 | encrypted_password  | string | NOT NULL |
 
 ### Association
@@ -20,16 +20,16 @@
 
 ## syuppin_id
 
-| Column       | Type    | Options  |
-| ------------ | ------- | -------- |
-| sina_name    | string  | NOT NULL |
-| sina_setumei | text    | NOT NULL |
-| kategori_id  | integer | NOT NULL |
-| sina_zyoutai | text    | NOT NULL |
-| haisouryou   | integer | NOT NULL |
-| hassousaki   | text    | NOT NULL |
-| hassou_day   | integer | NOT NULL |
-| kakau        | integer | NOT NULL |
+| Column                 | Type    | Options  |
+| ---------------------- | ------- | -------- |
+| sina_name              | string  | NOT NULL |
+| sina_setumei           | text    | NOT NULL |
+| category_id            | integer | NOT NULL |
+| status_id              | integer | NOT NULL |
+| prefecure_money_id     | integer | NOT NULL |
+| prefecure_id           | integer | NOT NULL |
+| scheduled_delivery_id  | integer | NOT NULL |
+| kakau                  | integer | NOT NULL |
 
 ### Association
 
@@ -54,8 +54,8 @@
 | Column         | Type       | Options  |
 | -------------- | ---------- | -------- |
 | yuubinn_bangou | string     | NOT NULL |
-| ken            | string     | NOT NULL |
-| zititai        | string     | NOT NULL |
+| ken            | integer    | NOT NULL |
+| prefecure      | string     | NOT NULL |
 | fandei         | string     | NOT NULL |
 | tatemono_mei   | string     |          |
 | denwa_bamgou   | string     | NOT NULL |
