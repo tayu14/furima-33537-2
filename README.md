@@ -2,46 +2,64 @@
 
 ## users テーブル
 
-| Column        | Type   | Options  |
-| ------------- | ------ | -------- |
-| niku_name     | text   | NOT NULL |
-| name          | text   | NOT NULL |
-| katakana_name | text   | NOT NULL |
-| nenn          | int    | NOT NULL |
-| tuki          | int    | NOT NULL |
-| hi            | int    | NOT NULL |
-| me-ru         | text   | NOT NULL |
-| pass          | text   | NOT NULL |
+| Column              | Type   | Options  |
+| ------------------- | ------ | -------- |
+| niku_name           | string | NOT NULL |
+| namae               | string | NOT NULL |
+| myouzi              | string | NOT NULL |
+| namae_kana          | string | NOT NULL |
+| myouzi_kana         | string | NOT NULL |
+| birthday            | date   | NOT NULL |
+| me-ru               | string | NOT NULL |
+| encrypted_password  | string | NOT NULL |
+
+### Association
+
+- has_many : syuppin
+- has_many : kounyuu_kiroku
 
 ## syuppin
 
-| Column       | Type   | Options  |
-| ------------ | ------ | -------- |
-| sina_name    | text   | NOT NULL |
-| sina_setumei | text   | NOT NULL |
-| kategori     | text   | NOT NULL |
-| sina_zyoutai | text   | NOT NULL |
-| haisouryou   | text   | NOT NULL |
-| hassousaki   | text   | NOT NULL |
-| hassou_day   | text   | NOT NULL |
-| kakau        | int    | NOT NULL |
-| image        | int    | NOT NULL |
+| Column       | Type    | Options  |
+| ------------ | ------- | -------- |
+| sina_name    | string  | NOT NULL |
+| sina_setumei | text    | NOT NULL |
+| kategori_id  | integer | NOT NULL |
+| sina_zyoutai | text    | NOT NULL |
+| haisouryou   | integer | NOT NULL |
+| hassousaki   | text    | NOT NULL |
+| hassou_day   | integer | NOT NULL |
+| kakau        | integer | NOT NULL |
+
+### Association
+
+- belongs_to : user
+- has_one    : kounyuu_kiroku
 
 ## kounyuu_kiroku
 
-| Column        | Type   | Options  |
-| ------------- | ------ | -------- |
-| ka-do_bangou  | int    | NOT NULL |
-| kigenn        | int    | NOT NULL |
-| syouken_ko-do | int    | NOT NULL |
+| Column  | Type       | Options  |
+| ------- | ---------- | -------- |
+| user    | references | NOT NULL |
+| syuppin | references | NOT NULL |
+
+### Association
+
+- belongs_to : user
+- belongs_to : syuppin
+- has_one    : zyuusyo
 
 ## zyuusyo
 
 | Column         | Type   | Options  |
 | -------------- | ------ | -------- |
-| yuubinn_bangou | int    | NOT NULL |
-| ken            | text   | NOT NULL |
-| zititai        | text   | NOT NULL |
-| fandei         | text   | NOT NULL |
-| tatemono_mei   | text   | NOT NULL |
-| denwa_bamgou   | int    | NOT NULL |
+| yuubinn_bangou | string | NOT NULL |
+| ken            | string | NOT NULL |
+| zititai        | string | NOT NULL |
+| fandei         | string | NOT NULL |
+| tatemono_mei   | string |          |
+| denwa_bamgou   | string | NOT NULL |
+
+### Association
+
+- belongs_to : kounyuu_kiroku
