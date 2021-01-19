@@ -30,7 +30,7 @@
 | prefecure_id           | integer    | null: false |
 | scheduled_delivery_id  | integer    | null: false |
 | price                  | integer    | null: false |
-| user                   | references | foreign key |
+| user                   | references | foreign_key: true |
 
 ### Association
 
@@ -41,8 +41,8 @@
 
 | Column  | Type       | Options     |
 | ------- | ---------- | ----------- |
-| user    | references | foreign key |
-| item    | references | foreign key |
+| user    | references | foreign_key: true |
+| item    | references | foreign_key: true |
 
 ### Association
 
@@ -60,7 +60,7 @@
 | fandee         | string     | null: false |
 | bill           | string     |             |
 | phone_number   | string     | null: false |
-| order          | references | foreign key |
+| order          | references | foreign_key: true |
 ### Association
 
 - belongs_to : order
