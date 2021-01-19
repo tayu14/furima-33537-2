@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column              | Type   | Options  |
-| ------------------- | ------ | -------- |
-| niku_name           | string | NOT NULL |
-| first_name          | string | NOT NULL |
-| family_name         | string | NOT NULL |
-| first_name_kana     | string | NOT NULL |
-| family_name_kana    | string | NOT NULL |
-| birthday            | date   | NOT NULL |
-| email               | string | NOT NULL |
-| encrypted_password  | string | NOT NULL |
+| Column              | Type   | Options     |
+| ------------------- | ------ | ----------- |
+| nick_name           | string | null: false |
+| first_name          | string | null: false |
+| family_name         | string | null: false |
+| first_name_kana     | string | null: false |
+| family_name_kana    | string | null: false |
+| birthday            | date   | null: false |
+| email               | string | null: false |
+| encrypted_password  | string | null: false |
 
 ### Association
 
@@ -20,16 +20,16 @@
 
 ## items
 
-| Column                 | Type    | Options  |
-| ---------------------- | ------- | -------- |
-| goods_name             | string  | NOT NULL |
-| goods_explanation      | text    | NOT NULL |
-| category_id            | integer | NOT NULL |
-| status_id              | integer | NOT NULL |
-| prefecure_money_id     | integer | NOT NULL |
-| prefecure_id           | integer | NOT NULL |
-| scheduled_delivery_id  | integer | NOT NULL |
-| price                  | integer | NOT NULL |
+| Column                 | Type    | Options     |
+| ---------------------- | ------- | ----------- |
+| goods_name             | string  | null: false |
+| goods_explanation      | text    | null: false |
+| category_id            | integer | null: false |
+| status_id              | integer | null: false |
+| prefecure_money_id     | integer | null: false |
+| prefecure_id           | integer | null: false |
+| scheduled_delivery_id  | integer | null: false |
+| price                  | integer | null: false |
 
 ### Association
 
@@ -38,10 +38,10 @@
 
 ## orders
 
-| Column  | Type       | Options  |
-| ------- | ---------- | -------- |
-| user    | references | NOT NULL |
-| item    | references | NOT NULL |
+| Column  | Type       | Options     |
+| ------- | ---------- | ----------- |
+| user    | references |             |
+| item    | references |             |
 
 ### Association
 
@@ -51,15 +51,15 @@
 
 ## address
 
-| Column         | Type       | Options  |
-| -------------- | ---------- | -------- |
-| postal_code    | string     | NOT NULL |
-| prefecure      | integer    | NOT NULL |
-| municipality   | string     | NOT NULL |
-| fandee         | string     | NOT NULL |
-| bill           | string     |          |
-| phone_number   | string     | NOT NULL |
-| order          | references |
+| Column         | Type       | Options     |
+| -------------- | ---------- | ----------- |
+| postal_code    | string     | null: false |
+| prefecure_id   | integer    | null: false |
+| municipality   | string     | null: false |
+| fandee         | string     | null: false |
+| bill           | string     |             |
+| phone_number   | string     | null: false |
+| order          | references |             |
 ### Association
 
 - belongs_to : order
