@@ -20,16 +20,17 @@
 
 ## items
 
-| Column                 | Type    | Options     |
-| ---------------------- | ------- | ----------- |
-| goods_name             | string  | null: false |
-| goods_explanation      | text    | null: false |
-| category_id            | integer | null: false |
-| status_id              | integer | null: false |
-| prefecure_money_id     | integer | null: false |
-| prefecure_id           | integer | null: false |
-| scheduled_delivery_id  | integer | null: false |
-| price                  | integer | null: false |
+| Column                 | Type       | Options     |
+| ---------------------- | ---------- | ----------- |
+| goods_name             | string     | null: false |
+| goods_explanation      | text       | null: false |
+| category_id            | integer    | null: false |
+| status_id              | integer    | null: false |
+| prefecure_money_id     | integer    | null: false |
+| prefecure_id           | integer    | null: false |
+| scheduled_delivery_id  | integer    | null: false |
+| price                  | integer    | null: false |
+| user                   | references | foreign key |
 
 ### Association
 
@@ -40,8 +41,8 @@
 
 | Column  | Type       | Options     |
 | ------- | ---------- | ----------- |
-| user    | references |             |
-| item    | references |             |
+| user    | references | foreign key |
+| item    | references | foreign key |
 
 ### Association
 
@@ -59,7 +60,7 @@
 | fandee         | string     | null: false |
 | bill           | string     |             |
 | phone_number   | string     | null: false |
-| order          | references |             |
+| order          | references | foreign key |
 ### Association
 
 - belongs_to : order
