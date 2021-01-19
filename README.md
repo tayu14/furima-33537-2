@@ -5,61 +5,61 @@
 | Column              | Type   | Options  |
 | ------------------- | ------ | -------- |
 | niku_name           | string | NOT NULL |
-| namae               | string | NOT NULL |
-| myouzi              | string | NOT NULL |
-| namae_kana          | string | NOT NULL |
-| myouzi_kana         | string | NOT NULL |
+| first_name          | string | NOT NULL |
+| family_name         | string | NOT NULL |
+| first_name_kana     | string | NOT NULL |
+| family_name_kana    | string | NOT NULL |
 | birthday            | date   | NOT NULL |
 | email               | string | NOT NULL |
 | encrypted_password  | string | NOT NULL |
 
 ### Association
 
-- has_many : syuppins
-- has_many : kounyuu_kirokus
+- has_many : items
+- has_many : orders
 
-## syuppin_id
+## items
 
 | Column                 | Type    | Options  |
 | ---------------------- | ------- | -------- |
-| sina_name              | string  | NOT NULL |
-| sina_setumei           | text    | NOT NULL |
+| goods_name             | string  | NOT NULL |
+| goods_explanation      | text    | NOT NULL |
 | category_id            | integer | NOT NULL |
 | status_id              | integer | NOT NULL |
 | prefecure_money_id     | integer | NOT NULL |
 | prefecure_id           | integer | NOT NULL |
 | scheduled_delivery_id  | integer | NOT NULL |
-| kakau                  | integer | NOT NULL |
+| price                  | integer | NOT NULL |
 
 ### Association
 
 - belongs_to : user
-- has_one    : kounyuu_kiroku
+- has_one    : order
 
-## kounyuu_kiroku
+## orders
 
 | Column  | Type       | Options  |
 | ------- | ---------- | -------- |
 | user    | references | NOT NULL |
-| syuppin | references | NOT NULL |
+| item    | references | NOT NULL |
 
 ### Association
 
 - belongs_to : user
-- belongs_to : syuppin
-- has_one    : zyuusyo
+- belongs_to : item
+- has_one    : address
 
-## zyuusyo
+## address
 
 | Column         | Type       | Options  |
 | -------------- | ---------- | -------- |
-| yuubinn_bangou | string     | NOT NULL |
-| ken            | integer    | NOT NULL |
-| prefecure      | string     | NOT NULL |
-| fandei         | string     | NOT NULL |
-| tatemono_mei   | string     |          |
-| denwa_bamgou   | string     | NOT NULL |
-| kounyuu_kiroku | references |
+| postal_code    | string     | NOT NULL |
+| prefecure      | integer    | NOT NULL |
+| municipality   | string     | NOT NULL |
+| fandee         | string     | NOT NULL |
+| bill           | string     |          |
+| phone_number   | string     | NOT NULL |
+| order          | references |
 ### Association
 
-- belongs_to : kounyuu_kiroku
+- belongs_to : order
