@@ -26,25 +26,52 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include "First name can't be blank"
       end
+      it "名前が半角だと登録できない" do
+        @user.first_name = "a"
+        @user.valid?
+        expect(@user.errors.full_messages).to include "First name is invalid"
+      end
       it "苗字が空だと登録できない" do
         @user.family_name = ""
         @user.valid?
         expect(@user.errors.full_messages).to include "Family name can't be blank"
+      end
+      it "苗字が半角だと登録できない" do
+        @user.family_name = "a"
+        @user.valid?
+        expect(@user.errors.full_messages).to include "Family name is invalid"
       end
       it "名前（カタカナ）が空だと登録できない" do
         @user.first_name_kana = ""
         @user.valid?
         expect(@user.errors.full_messages).to include "First name kana can't be blank"
       end
+      it "名前（カタカナ）が半角だと登録できない" do
+        @user.first_name_kana = "a"
+        @user.valid?
+        expect(@user.errors.full_messages).to include "First name kana is invalid"
+      end
       it "苗字（カタカナ）が空だと登録できない" do
         @user.family_name_kana = ""
         @user.valid?
         expect(@user.errors.full_messages).to include "Family name kana can't be blank"
       end
+      it "苗字（カタカナ）が半角だと登録できない" do
+        @user.family_name_kana = "a"
+        @user.valid?
+        expect(@user.errors.full_messages).to include "Family name kana is invalid"
+      end
       it "emailが空では登録できない" do
         @user.email = ""
         @user.valid?
         expect(@user.errors.full_messages).to include "Email can't be blank"
+      end
+      it "emailが同じだと登録できない" do
+        @user.save
+        another_user = FactoryBot.build(:user)
+        another_user.email = @user.email
+        another_user.valid?
+        expect(another_user.errors.full_messages).to include "Email has already been taken"
       end
       it "@がないと登録できない" do
         @user.email = "sss"

@@ -15,6 +15,13 @@ class User < ApplicationRecord
 
          validates :password, format: { with: /\A[a-z0-9]+\z/ }
 
+         with_options format: { with: /\A[一-龥ぁ-ん]/ } do
+         validates :first_name
+         validates :family_name
+         end
+         validates :first_name_kana,  format: { with: /\A[ァ-ヶー－]+\z/ }
+         validates :family_name_kana,  format: { with: /\A[ァ-ヶー－]+\z/ }
+
           has_many :items
           has_many :orders
 
