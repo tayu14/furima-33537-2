@@ -1,25 +1,34 @@
 class Item < ApplicationRecord
+    belongs_to :user, optional: true
+    has_one    :order
+    has_one_attached :image
+
   with_options presence: true do
     validates :goods_name
     validates :goods_explanation
-    validates :category_id
-    validates :status_id
-    validates :prefecure_id
-    validates :prefecure_money_id
-    validates :scheduled_delivery_id
+    # validates :category_id
+    # validates :status_id
+    # validates :prefecure_id
+    # validates :prefecure_money_id
+    # validates :scheduled_delivery_id
     validates :price
-    validates :user
+    # validates :user
     end
 
-    belongs_to :user
-    has_one    :order
-    has_one_attached :image
+    # belongs_to :user
+    # has_one    :order
+    # has_one_attached :image
 
     validates :category_id, numericality: { other_than: 1 }
     validates :prefecure_money_id, numericality: { other_than: 1 }
     validates :prefecure_id, numericality: { other_than: 1 }
     validates :scheduled_delivery_id, numericality: { other_than: 1 }
     validates :status_id, numericality: { other_than: 1 }
+
+    validates :price,
+    numericality: { only_integer: true,
+    greater_than: 299, less_than: 10000000
+    }
 
     extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category

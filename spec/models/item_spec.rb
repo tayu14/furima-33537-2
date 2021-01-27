@@ -50,6 +50,21 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include "Scheduled delivery is not a number"
       end
+      it "販売額が空だと登録できない" do
+        @item.price = ""
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Price can't be blank"
+      end
+      it "販売額が299だと以下だと登録できない" do
+        @item.price = "22"
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Price must be greater than 299"
+      end
+      it "販売額が10000000以上だと登録できない" do
+        @item.price = "999999999"
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Price must be less than 10000000"
+      end
     end
   end
 end
