@@ -6,18 +6,8 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :goods_name
     validates :goods_explanation
-    # validates :category_id
-    # validates :status_id
-    # validates :prefecure_id
-    # validates :prefecure_money_id
-    # validates :scheduled_delivery_id
     validates :price
-    # validates :user
     end
-
-    # belongs_to :user
-    # has_one    :order
-    # has_one_attached :image
 
     validates :category_id, numericality: { other_than: 1 }
     validates :prefecure_money_id, numericality: { other_than: 1 }
