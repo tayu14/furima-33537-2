@@ -3,6 +3,9 @@ class ItemsController < ApplicationController
   def index
     @items = Item.includes(:user).order("created_at DESC")
   end
+  def show
+    @items = Item.find(params[:id])
+  end
   def new
     @item = Item.new
   end
