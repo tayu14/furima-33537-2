@@ -11,11 +11,10 @@ class ItemsController < ApplicationController
     @items = Item.new
   end
   def edit
-    if user_signed_in? && current_user.id == @item.user_id
-    else
-      render :show
+    if current_user.id != @item.user_id
+    render :show
     end
-  end
+   end
   def update
     
     if @item.update(item_params)
