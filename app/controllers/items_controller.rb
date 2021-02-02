@@ -7,11 +7,22 @@ class ItemsController < ApplicationController
     @items = Item.find(params[:id])
   end
   def new
-    @item = Item.new
+    @items = Item.new
+  end
+  def edit
+    @items = Item.find(params[:id])
+  end
+  def update
+    @items = Item.find(params[:id])
+    if @items.update(item_params)
+      redirect_to item_path
+    else
+     render action: :edit
+    end
   end
   def create
-    @item = Item.new(item_params)
-    if @item.save
+    @items = Item.new(item_params)
+    if @items.save
       redirect_to root_path
     else
       render :new
