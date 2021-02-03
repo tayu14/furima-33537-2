@@ -18,17 +18,15 @@ class ItemsController < ApplicationController
   def update
     if current_user.id == @item.user_id
     if @item.update(item_params)
-      # if current_user.id == @item.user_id
       redirect_to item_path
-      # end
     else
      render action: :edit
     end
   end
   end
   def create
-    @items = Item.new(item_params)
-    if @items.save
+    @item = Item.new(item_params)
+    if @item.save
       redirect_to root_path
     else
       render :new
