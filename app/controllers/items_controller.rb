@@ -1,34 +1,40 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show]
-  before_action :set_message, only: [:show, :edit, :update]
+  before_action :set_message, only: [:show, :edit, :update, :destroy]
   def index
     @items = Item.includes(:user).order("created_at DESC")
   end
+
   def show
     
   end
+
   def destroy
-    item = Item.find(params[:id])
+    
     item.destroy
     redirect_to root_path
   end
+
   def new
     @item = Item.new
   end
+
   def edit
     if current_user.id != @item.user_id
-    redirect_to root_path
+      redirect_to root_path
     end
-   end
+  end
+
   def update
     if current_user.id == @item.user_id
-    if @item.update(item_params)
-      redirect_to item_path
-    else
-     render action: :edit
+      if @item.update(item_params)
+        redirect_to item_path
+      else
+        render action: :edit
+      end
     end
   end
-  end
+
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -37,6 +43,7 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
   private
 
   def set_message
