@@ -7,8 +7,13 @@ class ItemsController < ApplicationController
   def show
     
   end
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to root_path
+  end
   def new
-    @items = Item.new
+    @item = Item.new
   end
   def edit
     if current_user.id != @item.user_id
