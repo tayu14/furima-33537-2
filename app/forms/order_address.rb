@@ -11,6 +11,8 @@ class OrderAddress
     validates :fandee
     validates :phone_number
     validates :token
+    validates :user_id
+    validates :item_id
   end
   validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/}
 
@@ -19,8 +21,6 @@ class OrderAddress
   validates :prefecure_id, numericality: { other_than: 1 }
 
   def save
-    # user = User.create(nick_name: nick_name, first_name: first_name, family_name: family_name, first_name_kana: first_name_kana, first_name_kana: first_name_kana, birthday: birthday, email: email)
-    # item = Item.create(goods_name: goods_name, goods_explanation: goods_explanation, category_id: category_id, status_id: status_id, prefecure_money_id: prefecure_money_id, prefecure_id: prefecure_id, scheduled_delivery_id: scheduled_delivery_id, price: price)
     order = Order.create(user_id: user_id, item_id: item_id)
     Address.create(postal_code: postal_code, prefecure_id: prefecure_id, municipality: municipality, fandee: fandee, bill: bill, phone_number: phone_number, order_id: order.id)
   end

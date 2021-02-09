@@ -6,6 +6,7 @@ FactoryBot.define do
     municipality    {"広島市安佐南区"}
     fandee          {"12-4-2"}
     phone_number    {98282737473}
-    
+    item_id         {1}
+    user_id         {1}
   end
 end
