@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Address, type: :model do
+RSpec.describe OrderAddress, type: :model do
   before do
-    @address = FactoryBot.build(:address)
+    @address = FactoryBot.build(:order_address)
   end
 
   describe "住所登録" do
