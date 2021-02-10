@@ -69,6 +69,19 @@ RSpec.describe OrderAddress, type: :model do
         @address.valid?
         expect(@address.errors.full_messages).to include "Token can't be blank"
       end
+
+      it "user_idが空だと登録できない" do
+        @address.user_id = ""
+        @address.valid?
+        expect(@address.errors.full_messages).to include "User can't be blank"
+      end
+
+      it "item_idが空だと登録できない" do
+        @address.item_id = ""
+        @address.valid?
+        expect(@address.errors.full_messages).to include "Item can't be blank"
+      end
+
     end
 end
  
